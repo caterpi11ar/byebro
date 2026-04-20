@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# byebro
 
-## Getting Started
+一个纯浏览器本地运行的「离职头像」生成工具:上传头像 → 自动转灰度 → 叠加「离职了」印章 → 导出 1024×1024 JPEG。所有处理在当前浏览器标签页内完成,不向任何服务器上传图片。
 
-First, run the development server:
+技术栈:Next.js 16 App Router · React 19 · Tailwind CSS v4 · shadcn/ui(base-nova preset) · lucide-react · sonner。
+
+## 开发
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+打开 http://localhost:3000 。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+可选环境变量(部署时替换):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
 
-## Learn More
+影响 metadataBase / canonical / sitemap / robots。
 
-To learn more about Next.js, take a look at the following resources:
+## 构建
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm build
+pnpm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 目录要点
 
-## Deploy on Vercel
+| 路径 | 作用 |
+| --- | --- |
+| `public/cover.png` | 「离职了」印章,部署时会作为静态资源 |
+| `lib/render-avatar.ts` | 画布渲染与 JPEG 导出的纯函数 |
+| `components/avatar-editor.tsx` | 主交互组件,client-side |
+| `components/upload-zone.tsx` | 拖拽/点击上传 |
+| `app/layout.tsx` | 全站 metadata、Noto Sans SC 字体、Toaster |
+| `app/page.tsx` | 首屏、FAQ、JSON-LD 结构化数据 |
+| `app/sitemap.ts` / `app/robots.ts` | SEO 基建 |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `<html lang="zh-CN">`
+- Open Graph / Twitter Card 完整配置
+- WebApplication + FAQPage 两份 JSON-LD
+- robots.txt / sitemap.xml 自动生成
+- 唯一页面,canonical 指向 `/`
+
+## 隐私
+
+项目不引入任何 analytics、追踪、API 路由或上传接口。用户的图片只会在浏览器内存中被解码、绘制、导出。
