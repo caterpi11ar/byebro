@@ -69,6 +69,12 @@ export default function Home() {
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               byebro
             </h1>
+            <a
+              href="https://byebro.caterpi11ar.com"
+              className="inline-block text-sm text-muted-foreground hover:text-foreground hover:underline"
+            >
+              byebro.caterpi11ar.com
+            </a>
           </header>
 
           <div className="space-y-2">
