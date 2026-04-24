@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 import { exportApprovalPng } from "@/lib/render-approval"
 
-const DEFAULT_NAME = "王若麟"
+const DEFAULT_NAME = "毛毛虫"
 const NOTICE_DAYS = 30
 const CARD_WIDTH = 760
 
