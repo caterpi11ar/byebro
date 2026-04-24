@@ -14,10 +14,6 @@ const faqs = [
     a: "不会。读取、转灰度、叠印章、导出 JPEG 都在你的浏览器标签页里完成,没有任何网络请求把图片发出去。",
   },
   {
-    q: "头像不是正方形会怎样?",
-    a: "按短边中心裁切为 1:1,再铺满到 1024×1024 的输出画布。",
-  },
-  {
     q: "导出是什么规格?",
     a: "1024×1024 JPEG,质量 0.92,适合大多数社交平台的头像和配图。",
   },
@@ -73,9 +69,6 @@ export default function Home() {
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               byebro
             </h1>
-            <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-              上传头像 → 自动灰度 → 盖上「离职了」印章 → 导出 1024×1024 JPEG。全程浏览器本地,零上传。
-            </p>
           </header>
 
           <div className="space-y-2">
