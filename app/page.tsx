@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { AvatarEditor } from "@/components/avatar-editor"
+import { EditorTabs } from "@/components/editor-tabs"
 
 export const metadata: Metadata = {
   title: "byebro — 一键给头像盖上「离职了」印章",
@@ -104,10 +104,10 @@ export default function Home() {
         </section>
 
         <section
-          aria-label="头像编辑器"
+          aria-label="离职工具"
           className="flex w-full justify-center lg:w-1/2 lg:justify-stretch"
         >
-          <AvatarEditor className="lg:h-full" />
+          <EditorTabs className="w-full max-w-xl" />
         </section>
       </main>
     </>
