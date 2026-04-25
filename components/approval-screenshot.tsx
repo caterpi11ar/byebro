@@ -147,7 +147,7 @@ export function ApprovalScreenshot({ className }: { className?: string }) {
             className="flex-1"
           >
             <Download className="size-4" />
-            {downloading ? "导出中..." : "下载 PNG"}
+            {downloading ? "导出中..." : "下载图片"}
           </Button>
         </div>
       </CardContent>
