@@ -96,7 +96,10 @@ export function renderToCanvas(
   const anchor = coverAnchor ?? { x: 0.5, y: 0.5 }
   const dx = size / 2 - anchor.x * targetW
   const dy = size / 2 - anchor.y * targetH
+  ctx.save()
+  ctx.globalAlpha = 0.7
   ctx.drawImage(cover as CanvasImageSource, dx, dy, targetW, targetH)
+  ctx.restore()
 }
 
 export function exportJpeg(
